@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import api from '../api';
+import Layout from './Layout'
+import {UserConsumer} from '../contexts/UserContext'
 
 const posts = [
     {
