@@ -3,47 +3,39 @@ import api from '../api';
 import Layout from './Layout'
 import {UserConsumer} from '../contexts/UserContext'
 
-const posts = [
-    {
-        id:1,
-        title: 'React 공부법'
-    },
-    {
-        id:2,
-        title: '프론트엔드 면접준비하기'
-    }
-]
-
 export default class PostList extends Component {
-    constructor(props) {
-      super(props)
-    
-      this.state = {
-         posts: [],
-         loading: false
-      }
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+      posts: [],
+      loading: false
     }
- 
-async componentDidMount(){
+  }
+  
+  async componentDidMount() {
     const res = await api.get('/posts')
     this.setState({
-        posts: res.data
-    }) 
-}
+      posts: res.data
+    })
+  }
 
   render() {
-      const {posts} = this.state
-      const {onPostDetailPage, onNewPostFormPage} = this.props
+    const {posts} = this.state
+    const {onPostDetailPage, onNewPostFormPage, onLoginFormPage} = this.props
     return (
-      <div>
-        <button onClick={() => onNewPostFormPage()}>새글쓰기</button>
+      <Layout title="게시물 목록" onLoginFormPage={onLoginFormPage}>
+        <button onClick={() => onNewPostFormPage()}>새 글 쓰기</button>
         <h1>게시물 목록</h1>
         <ul>
-            {posts.map(post => (
-              <li key={post.id} onClick={() => onPostDetailPage(post.id)}>{post.title}</li>  
-            ))}
+          {posts.map(post => (
+            <li key={post.id} onClick={() => onPostDetailPage(post.id)}>{post.title}</li>
+          ))}
         </ul>
-      </div>
+      </Layout>
     )
   }
 }
+
+//HOC는 단한번만 적용되게 만들어 주어야 한다.
+//HOC를 Render Method안에서 쓰면 절대 안된다.
