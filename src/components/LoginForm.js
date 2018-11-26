@@ -10,7 +10,7 @@ class LoginForm extends React.Component {
     this.passwordRef = React.createRef()
   }
 
-      // async handleSubmit(e){
+        // async handleSubmit(e){
     //     e.preventDefault()
     //     const username = this.usernameRef.current.value
     //     const password = e.target.elements.password.value
@@ -36,13 +36,13 @@ class LoginForm extends React.Component {
     const {onRegister} = this.props
     return (
       <React.Fragment>
-        <form onSubmit={e => this.handleSubmit(e)}>
+        <Form onSubmit={e => this.handleSubmit(e)}>
           <h1>로그인</h1>
-          <Form.input label="사용자이름" type="text" name="username" />
-          <Form.input label= "비밀번호" type="password" name="password" />
+          <Form.Input label="사용자 이름" type="text" name="username" />
+          <Form.Input label="비밀번호" type="password" name="password" />
 
-          <button>로그인</button>
-        </form>
+          <Form.Button>로그인</Form.Button>
+        </Form>
         <button onClick={() => onRegister()}>회원 가입</button>
       </React.Fragment>
     )
@@ -50,11 +50,8 @@ class LoginForm extends React.Component {
 }
 
 export default withUser(LoginForm)
-
 // export default props => {
 //   return <UserConsumer>
 //     {({login}) => <LoginForm {...props} login={login} />}
 //   </UserConsumer>
 // }
-
-

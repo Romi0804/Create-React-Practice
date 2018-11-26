@@ -9,16 +9,16 @@ class Layout extends Component {
       <div>
         <div className="header">
           헤더
-              <div>{username}</div>
-              {username ? (
-                <button onClick={logout}>로그아웃</button>
-              ) : (
-                <button onClick={onLoginFormPage}>로그인</button>
-              )}
+          <div>{username}</div>
+          {username ? (
+            <button onClick={logout}>로그아웃</button>
+          ) : (
+            <button onClick={onLoginFormPage}>로그인</button>
+          )}            
         </div>
         <h1 className="title">{this.props.title}</h1>
         {this.props.children}
-        <div className="footer">푸터</div>
+        <div className="foooter">푸터</div>
       </div>
     )
   }

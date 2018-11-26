@@ -2,7 +2,12 @@ import React, { Component } from 'react'
 
 import api from '../api'
 
-const {Provider, Consumer} = React.createContext()
+const {Provider, Consumer} = React.createContext({
+  username: 'fast',
+  id: 0,
+  login: () => {},
+  logout: () => {}
+})
 
 export default class UserProvider extends Component {
   constructor(props) {
@@ -63,25 +68,21 @@ export default class UserProvider extends Component {
   }
 }
 
-//Display Name 설정.(작업의 편리성, 꼼곰녀가되자)
-function getDisplayName(WrappedComponent) {
-  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
-}
-
 function withUser(WrappedComponent) {
-  function WithUser(props) {
+  return function (props) {
     return (
       <Consumer>
         {value => <WrappedComponent {...value} {...props} />}
       </Consumer>
     )
   }
-  WithUser.displayName= `withUser(${getDisplayName(WrappedComponent)})`
+  //WithUser.displayName= `withUser(${getDisplayName(WrappedComponent)})`
   //WithUser.displayName = 'WithUser(!!!)'
   //React 개발자 도구에서 Unknown으로 뜨는걸 방지하기 위해 쓰는 코드
   //팀 프로젝트 할때에는 쓰는 것이 좋다 
-  return WithUser
+  //return WithUser
 }
+
 
 export {
   UserProvider,
