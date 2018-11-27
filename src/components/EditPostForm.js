@@ -20,10 +20,7 @@ export default class EditPostForm extends Component {
     })
   }
   
-  async handleSubmit(e) {
-    e.preventDefault()
-    const title = e.target.elements.title.value
-    const body = e.target.elements.body.value
+  async handleSubmit(title, body) {
     await api.patch(`/posts/${this.props.postId}`, {
       title,
       body
@@ -38,7 +35,7 @@ export default class EditPostForm extends Component {
       return 'loading...'
     }
     return (
-      <PostForm editing={true} onSubmit={e => this.handleSubmit(e)} title={title} body={body} />
+      <PostForm editing={true} onSubmit={(title, body) => this.handleSubmit(title, body)} title={title} body={body} />
     //  component들간에 정보를 주고 받는것은 prop으로 가능하니까 넣어주고 style 조금 다르게 먹이고 싶다고 얘기 하는건 
     // editing={true}로 표현해서 말해준다.
     )
