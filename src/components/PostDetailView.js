@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Layout from './Layout'
 import {UserConsumer} from '../contexts/UserContext'
+import withLoading from '../HOC/withLoading';
 
 export default class PostDetailView extends Component {
 
@@ -24,3 +25,5 @@ export default class PostDetailView extends Component {
     )
   }
 }
+
+export default withLoading(PostDetailView)

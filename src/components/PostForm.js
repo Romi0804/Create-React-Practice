@@ -6,8 +6,9 @@ import s from './PostForm.module.scss'
 // defaultValue에 다른 값을 또 넣어주지 않도록 주의
 export default class PostForm extends Component {
   static defaultProps = {
-    //true가 주어지면
+    //true가 주어지면, 편집모드 스타일이 적용됨
     editing: false,
+    //폼 전송시 호출되는 함수, title과  body를 인수로 받음
     onSubmit: () => {}
   }
 
