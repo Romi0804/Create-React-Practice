@@ -3,6 +3,18 @@ import {UserConsumer, withUser} from '../contexts/UserContext'
 import {Form} from 'semantic-ui-react'
 
 class LoginForm extends React.Component {
+  static defaultProps={
+    //사용자가 로그인 폼을 전송했을때 호출되는 함수
+    //username과 password 인수를 받음
+    login: (username, password) => {},
+    // 회원 가입 버튼을 눌렀을때 호출되는 함수
+    onRegister: () => {}
+  }
+  //prop이 뭔지 알려줘야해 그럴때 static defaultprops를 써서 명시한다.
+  //defaulprops는 기본값으로 사용되는거잖아 기본값으로 사용되는게 문제일수 있다.
+  //onregister가 반드시 실행되어야 실행하고 싶다면 
+  //onRegister:null로 써주면 된다. 이런경우 함수를 반드시 넘겨줘야한다.
+
   constructor(props) {
     super(props)
   
